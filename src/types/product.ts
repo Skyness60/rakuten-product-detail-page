@@ -15,4 +15,5 @@ export interface Product {
     count: number;
   };
   breadcrumbs?: string[];
+  usedPrice?: number;
 }
