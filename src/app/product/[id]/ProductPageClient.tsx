@@ -35,8 +35,6 @@ function ProductContent({ id }: { id: string }) {
       <ProductError message={error instanceof Error ? error.message : "Could not load product."} />
     );
 
-  console.log("Product description:", data.description);
-
   return (
     <Box>
       <Box sx={{ mb: 2 }}>

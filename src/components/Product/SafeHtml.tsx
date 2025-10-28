@@ -1,22 +1,12 @@
-import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import DOMPurify from "dompurify";
 
 interface SafeHtmlProps {
   html: string;
 }
 
 const SafeHtml = ({ html }: SafeHtmlProps) => {
-  const [sanitizedHtml, setSanitizedHtml] = useState<string>("");
-
-  useEffect(() => {
-    const loadDOMPurify = async () => {
-      const DOMPurify = (await import("dompurify")).default;
-      setSanitizedHtml(DOMPurify.sanitize(html));
-    };
-
-    loadDOMPurify();
-  }, [html]);
-
+  const sanitizedHtml = DOMPurify.sanitize(html);
   return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
 };
 
